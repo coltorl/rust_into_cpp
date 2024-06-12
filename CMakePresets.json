@@ -1,0 +1,38 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 19,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "ninja-multi-clang",
+            "displayName": "Ninja Multi-Config with Clang",
+            "description": "Use Ninja Multi-Config generator with Clang compiler",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "YES"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug Build",
+            "description": "Compile with debug settings",
+            "configurePreset": "ninja-multi-clang",
+            "configuration": "Debug"
+        },
+        {
+            "name": "release",
+            "displayName": "Release Build",
+            "description": "Compile with release settings",
+            "configurePreset": "ninja-multi-clang",
+            "configuration": "Release"
+        }
+    ]
+}

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>400</width>
+                <height>300</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>MainWindow</string>
+        </property>
+        <property name="styleSheet">
+            <string>
+                QMainWindow {
+                background-color: #2e2e2e;
+                }
+                QLabel {
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: bold;
+                }
+                QPushButton {
+                background-color: #3a3a3a;
+                color: #ffffff;
+                border: 1px solid #5c5c5c;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 16px;
+                }
+                QPushButton:hover {
+                background-color: #4a4a4a;
+                }
+                QLineEdit, QTextEdit {
+                background-color: #3a3a3a;
+                color: #ffffff;
+                border: 1px solid #5c5c5c;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 16px;
+                }
+                QCheckBox {
+                color: #ffffff;
+                font-size: 16px;
+                }
+                QCheckBox::indicator {
+                width: 18px;
+                height: 18px;
+                border: 1px solid #5c5c5c;
+                background-color: #3a3a3a;
+                }
+                QCheckBox::indicator:checked {
+                background-color: #4a4a4a; /* A noticeably darker background */
+                border-color: #ffffff; /* White border to contrast against the darker background */
+                }
+                QCheckBox::indicator:hover {
+                background-color: #555555; /* Slightly lighter than checked state when hovered */
+                }
+                QComboBox {
+                background-color: #3a3a3a;
+                color: #ffffff;
+                border: 1px solid #5c5c5c;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 16px;
+                }
+                QComboBox::drop-down {
+                subcontrol-origin: padding;
+                subcontrol-position: top right;
+                width: 15px;
+                border-left: 1px solid #5c5c5c;
+                }
+                QComboBox QAbstractItemView {
+                background-color: #3a3a3a;
+                color: #ffffff;
+                border: 1px solid #5c5c5c;
+                selection-background-color: #4a4a4a;
+                selection-color: #ffffff;
+                }
+            </string>
+        </property>
+        <widget class="QWidget" name="centralWidget">
+            <layout class="QVBoxLayout" name="verticalLayout">
+                <item>
+                    <widget class="QLabel" name="label">
+                        <property name="text">
+                            <string>Hello, World!</string>
+                        </property>
+                        <property name="alignment">
+                            <set>Qt::AlignCenter</set>
+                        </property>
+                    </widget>
+                </item>
+                <item>
+                    <widget class="QPushButton" name="pushButton">
+                        <property name="text">
+                            <string>Click Me</string>
+                        </property>
+                    </widget>
+                </item>
+                <item>
+                    <widget class="QLineEdit" name="lineEdit">
+                        <property name="placeholderText">
+                            <string>Type something...</string>
+                        </property>
+                    </widget>
+                </item>
+                <item>
+                    <widget class="QTextEdit" name="textEdit">
+                        <property name="placeholderText">
+                            <string>Enter multi-line text here...</string>
+                        </property>
+                    </widget>
+                </item>
+                <item>
+                    <widget class="QCheckBox" name="checkBox">
+                        <property name="text">
+                            <string>Check me</string>
+                        </property>
+                    </widget>
+                </item>
+                <item>
+                    <widget class="QComboBox" name="comboBox">
+                        <item>
+                            <property name="text">
+                                <string>Option 1</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Option 2</string>
+                            </property>
+                        </item>
+                        <item>
+                            <property name="text">
+                                <string>Option 3</string>
+                            </property>
+                        </item>
+                    </widget>
+                </item>
+            </layout>
+        </widget>
+        <widget class="QMenuBar" name="menuBar" />
+        <widget class="QStatusBar" name="statusBar" />
+    </widget>
+    <resources />
+    <connections />
+</ui>
