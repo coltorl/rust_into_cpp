@@ -9,4 +9,4 @@ qt_add_executable(cxx_app
     mainwindow.ui
 )
 
-target_link_libraries(cxx_app PRIVATE cxx_lib c_lib Qt6::Widgets)
+target_link_libraries(cxx_app PRIVATE cxx_lib c_lib rs_lib Qt6::Widgets)
