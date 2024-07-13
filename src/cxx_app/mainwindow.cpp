@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget* parent)
             ui->label->setText(quote_result.data.h.c_str());
         } else {
             // WARN: unsafe, will crash
-            // ui->label->setText(quote_result.data.q.c_str());
+            // ui->label->setText(quote_result.data.h.c_str());
             ui->label->setText(fmt::format("<font color='red'>{}", quote_result.msg.c_str()).c_str());
         }
     });

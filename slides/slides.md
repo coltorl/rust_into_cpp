@@ -175,6 +175,76 @@ corrosion_add_cxxbridge(rs_to_cxx_lib
 corrosion_link_libraries(rs_lib c_lib cxx_lib OpenSSL::SSL)
 ```
 ---
+# Now with Rust!!!
+```rs
+fn rs_lib_quote() -> ffi::QuoteResult {
+    let rt = tokio::runtime::Runtime::new().unwrap();
+    let result = rt.block_on(get_quote());
+
+    match result {
+        Ok(resp) => ffi::QuoteResult {
+            success: true,
+            data: resp.into(),
+            msg: "".to_string(),
+        },
+        Err(e) => ffi::QuoteResult {
+            success: false,
+            data: ffi::QuoteFfi {
+                q: "".to_string(),
+                a: "".to_string(),
+                h: "".to_string(),
+            },
+            msg: match e {
+                QuoteError::Network(s) => s,
+                QuoteError::NoQuotes => "No Quotes Found".to_string(),
+                QuoteError::DeserlizationError => "DeserializationError".to_string(),
+                QuoteError::Other => "Unknown Error".to_string(),
+            },
+        },
+    }
+}
+```
+---
+# Using the Rust Library
+```c++
+#include "rs_to_cxx_lib/lib.h"
+#include "rs_lib.h"
+```
+
+```c++
+connect(ui->rust_unsafe_hello, &QPushButton::clicked, this, [this](){
+    ui->label->setText(rs_lib_unsafe_hello());
+});
+
+connect(ui->rust_safe_hello, &QPushButton::clicked, this, [this](){
+    ui->label->setText(rs_lib_hello().c_str());
+});
+
+connect(ui->rust_c_hello, &QPushButton::clicked, this, [this](){
+    ui->label->setText(rs_lib_c_hello().c_str());
+});
+```
+
+---
+# Using the Rust Library
+```c++
+connect(ui->rust_cxx_hello, &QPushButton::clicked, this, [this](){
+    ui->label->setText(rs_lib_cxx_hello().c_str());
+});
+
+connect(ui->get_quote, &QPushButton::clicked, this, [this](){
+    auto quote_result = rs_lib_quote();
+
+    if (quote_result.success){
+        ui->label->setText(quote_result.data.h.c_str());
+    } else {
+        // WARN: unsafe, will crash
+        // ui->label->setText(quote_result.data.h.c_str());
+        ui->label->setText(fmt::format("<font color='red'>{}", quote_result.msg.c_str()).c_str());
+    }
+});
+```
+---
 # Demo time (Maybe?)
 ---
 # Limitations
