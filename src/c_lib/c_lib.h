@@ -5,9 +5,7 @@
 extern "C" {
 #endif // __cplusplus
 
-typedef enum c_lib_err { C_LIB_SUCCESS, C_LIB_ERROR } c_lib_err;
-
-c_lib_err c_lib_func(char** str);
+int c_lib_hello(char** str);
 
 #ifdef __cplusplus
 }

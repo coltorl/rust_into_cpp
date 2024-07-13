@@ -6,12 +6,12 @@
 
 #define RET "Hello From C!"
 
-c_lib_err c_lib_func(char** str) {
+int c_lib_hello(char** str) {
     assert(str != NULL);
     *str = malloc(sizeof(RET) + 1);
     if (!*str) {
-        return C_LIB_ERROR;
+        return -1;
     }
     strcpy(*str, RET);
-    return C_LIB_SUCCESS;
+    return 0;
 }

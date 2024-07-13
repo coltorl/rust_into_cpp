@@ -5,4 +5,4 @@ constexpr std::string_view RET = "Hello From C++!";
 
 }
 
-std::string cxx_lib::func() { return std::string(RET); }
+std::unique_ptr<std::string> cxx_lib::hello() { return std::make_unique<std::string>(RET); }
