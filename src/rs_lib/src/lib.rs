@@ -24,9 +24,6 @@ pub extern "C" fn rs_lib_unsafe_hello() -> *mut libc::c_char {
     }
 }
 
-extern "C" {
-    fn c_lib_hello(str: *mut *mut c_char) -> i32;
-}
 
 #[cxx::bridge]
 mod ffi {
@@ -37,7 +34,6 @@ mod ffi {
         h: String,
     }
 
-    // cxxbridge does not support Result for type T. Need to translate Result to explicit type
     struct QuoteResult {
         success: bool,
         data: QuoteFfi,
@@ -50,6 +46,10 @@ mod ffi {
         fn rs_lib_cxx_hello() -> String;
         fn rs_lib_quote() -> QuoteResult;
     }
+}
+
+extern "C" {
+    fn c_lib_hello(str: *mut *mut c_char) -> i32;
 }
 
 #[cxx::bridge(namespace = "cxx_lib")]
