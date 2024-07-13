@@ -3,7 +3,6 @@ theme: gaia
 _class: lead
 paginate: true
 backgroundColor: #fff
-backgroundImage: url('https://marp.app/assets/hero-background.svg')
 ---
 
 # Integrating Rust into an Existing <br/>C/C++ Codebase using CMake
@@ -129,7 +128,6 @@ mod ffi {
         a: String,
         h: String,
     }
-    // cxxbridge does not support Result for type T. Need to translate Result to explicit type
     struct QuoteResult {
         success: bool,
         data: QuoteFfi,
